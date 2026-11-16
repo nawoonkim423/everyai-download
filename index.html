@@ -17,11 +17,11 @@
   :focus-visible{outline:3px solid #2c9a80;outline-offset:3px;border-radius:4px}
   .skip{position:absolute;left:12px;top:-60px;background:#fff;padding:10px 14px;border-radius:8px;z-index:10}
   .skip:focus{top:12px}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
   header.hero{background:var(--deep);color:#eef5f2;padding:28px 0 64px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:#cfe0da}
   .brand svg{width:34px;height:34px;flex:none}
-  .hero h1{font-size:clamp(30px,5.2vw,50px);line-height:1.25;margin:48px 0 14px;letter-spacing:-1px;color:#fff}
+  .hero h1{font-size:clamp(30px,4.4vw,56px);line-height:1.25;margin:48px 0 14px;letter-spacing:-1px;color:#fff}
   .hero h1 em{font-style:normal;color:var(--gold)}
   .hero p.lead{font-size:clamp(17px,2.2vw,20px);max-width:700px;margin:0 0 26px;color:#d5e3de}
   .tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
@@ -100,6 +100,17 @@
   footer{background:var(--deep);color:#cfe0da;padding:36px 0;font-size:15px}
   footer .brand{margin-bottom:10px;color:#fff;font-size:17px}
   footer p{margin:4px 0}
+  .hero-grid{display:grid;gap:40px;align-items:center}
+  .hero-demo{margin:0;background:#ffffff0f;border:1px solid #ffffff2b;border-radius:18px;padding:24px;color:#e6efec}
+  .demo-title{margin:0 0 14px;font-weight:700;color:var(--gold)}
+  .demo-row{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:center;background:#ffffff14;border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .demo-row b{color:#fff;font-size:18px}
+  .demo-tag{font-size:13px;font-weight:700;text-align:center;border-radius:6px;padding:2px 0;background:#ffffff26}
+  .demo-alert{margin:14px 0 8px;background:#fdf1e3;color:#8a4b08;border-radius:10px;padding:12px 14px;font-weight:700;line-height:1.5}
+  .demo-time{margin:0;font-size:14px;color:#a9c2bb}
+  @media(min-width:960px){.hero-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px}}
+  @media(max-width:959px){.hero-demo{max-width:520px}}
+  @media(max-width:599px){.hero-demo{display:none}.nav .btn{flex:1 1 auto;text-align:center}.hero .for{border-radius:12px}}
   @media(max-width:720px){body{font-size:16px}section{padding:48px 0}.mock .mid{grid-template-columns:1fr}.list{border-left:0;border-top:1px solid var(--line)}.pair{grid-template-columns:1fr}.dl{grid-template-columns:1fr}.player{min-height:190px}}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -113,6 +124,8 @@
       <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a6a78"/><stop offset="1" stop-color="#143844"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d47a"/><stop offset="1" stop-color="#c58f2c"/></linearGradient></defs><rect x="10" y="14" width="92" height="96" rx="20" fill="url(#f)"/><rect x="10" y="14" width="92" height="96" rx="20" fill="none" stroke="#e0b04a" stroke-width="2.5"/><rect x="22" y="80" width="30" height="5.5" rx="2.75" fill="#f4f7f8"/><rect x="22" y="90" width="19" height="4.5" rx="2.25" fill="#f4f7f8" opacity=".55"/><polygon points="104.6,21.4 36.6,111.7 29.6,115.6 30.6,107.8 98.6,16.9" fill="#fff" stroke="#7f979f" stroke-width="1.4" stroke-linejoin="round"/><line x1="101.6" y1="19.2" x2="110.4" y2="7.5" stroke="#8a5f1c" stroke-width="5.5" stroke-linecap="round"/><line x1="111.2" y1="26.4" x2="92" y2="12" stroke="url(#g)" stroke-width="6.5" stroke-linecap="round"/><circle cx="111" cy="6.8" r="5.2" fill="url(#g)"/></svg>
       <span>엑스칼리버 제작소</span>
     </div>
+    <div class="hero-grid">
+    <div class="hero-text">
     <h1>영상의 <em>빈틈</em>을 찾는<br>AI 배리어프리 점검 도구</h1>
     <p class="for">공공기관·복지관에서 안내 영상을 만드는 분들을 위해 만들었어요</p>
     <p class="lead">영상의 음성, 자막, 화면 글자를 비교해서<br>장애인이 놓칠 수 있는 정보를 공개 전에 찾아 줘요.</p>
@@ -124,6 +137,15 @@
       <a class="btn ghost" href="#how">사용 방법 보기</a>
       <a class="btn primary" href="#download">프로그램 받기</a>
     </nav>
+    </div>
+    <figure class="hero-demo" aria-label="찾아 주는 예시: 화면에는 신청 마감 10월 30일(금)이 나오지만 음성은 서둘러 주세요라고만 해서, 시각장애인은 마감일을 알 수 없어요.">
+      <p class="demo-title">이런 걸 찾아 줘요</p>
+      <div class="demo-row"><span class="demo-tag">화면</span><b>신청 마감 10월 30일(금)</b></div>
+      <div class="demo-row"><span class="demo-tag">음성</span><span>“자리가 얼마 없으니 서둘러 주세요.”</span></div>
+      <p class="demo-alert">⚠ 마감일이 말로 안 나와요.<br>시각장애인은 알 수 없어요.</p>
+      <p class="demo-time">00:35 · 화면 정보 누락 의심</p>
+    </figure>
+    </div>
   </div>
 </header>
 
