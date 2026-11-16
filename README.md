@@ -4,12 +4,14 @@
 공공기관·복지관에서 안내 영상을 만드는 분들을 위해 만들었어요.
 
 > 이 저장소는 **설치 파일 배포용**이에요. 소스 코드는 들어 있지 않아요.
+>
+> 소개 페이지: https://nawoonkim423.github.io/everyai-download/
 
 ## 내려받기
 
-**[설치 파일 받기 (everyai-setup.exe)](https://github.com/nawoonkim423/everyai-download/releases/latest/download/everyai-setup.exe)**
+설치 파일은 **곧 공개돼요.** 공개되면 이 저장소의 [Releases](https://github.com/nawoonkim423/everyai-download/releases)에서 받을 수 있어요.
 
-1. 위 링크를 누르면 설치 파일이 받아져요.
+1. Releases에서 `everyai-setup.exe`를 받아요.
 2. 받은 파일을 열어 설치해요.
 3. 바탕화면 아이콘으로 실행해요.
 
