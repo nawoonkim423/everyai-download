@@ -80,6 +80,8 @@
   .fake{border-radius:8px;padding:6px 16px;font-weight:700;border:1px solid var(--line)}
   .fake.go{background:var(--teal);color:#fff;border-color:var(--teal)}
   figcaption{color:var(--sub);font-size:14px;margin-top:10px}
+  img.shot{display:block;width:100%;height:auto;border:1px solid #c9d6d3;border-radius:14px;box-shadow:0 10px 30px #1c2f3312;background:#fff}
+  .shots img.shot{object-fit:contain;aspect-ratio:16/10}
   ul.check{padding:0;margin:0;list-style:none;display:grid;gap:10px}
   ul.check li{padding-left:30px;position:relative}
   ul.check li::before{content:"";position:absolute;left:4px;top:.55em;width:12px;height:7px;border-left:3px solid #2d7a6a;border-bottom:3px solid #2d7a6a;transform:rotate(-45deg)}
@@ -198,23 +200,9 @@
     <p class="eyebrow">화면 미리 보기</p>
     <h2 id="h-screen">목록을 누르면 그 장면이 바로 나와요</h2>
     <figure>
-      <div class="mock" role="img" aria-label="검수 화면 예시. 위에는 영상 이름과 찾은 곳 8건 요약, 왼쪽에는 영상, 오른쪽에는 찾은 곳 목록, 아래에는 음성과 자막 비교와 확정·기각 버튼이 있어요.">
-        <div class="top"><b>문화교실 안내.mp4</b><span class="chip">찾은 곳 8</span><span class="chip">확인 전 5</span><span class="chip">문제 맞음 2</span><span class="chip">문제 아님 1</span></div>
-        <div class="mid">
-          <div class="player"><span class="banner">장소 | 주민문화센터 3층 강의실</span><span class="cap">장소는 주민문화센터 2층 강의실이에요.</span></div>
-          <div class="list">
-            <div class="item sel"><b>00:22 자막 숫자가 달라요</b><small>음성 3층 · 자막 2층</small><span class="st">확인 전</span></div>
-            <div class="item"><b>00:28 자막이 없어요</b><small>접수 안내 음성에 자막 없음</small><span class="st c">문제 맞음</span></div>
-            <div class="item"><b>00:35 말로 안 나와요</b><small>신청 마감일이 화면에만 있음</small><span class="st">확인 전</span></div>
-          </div>
-        </div>
-        <div class="bottom">
-          <b>00:22 · 음성과 자막의 층수가 달라요</b>
-          <div class="pair"><div><small>음성</small>장소는 주민문화센터 3층 강의실이에요.</div><div><small>자막</small>장소는 주민문화센터 2층 강의실이에요.</div></div>
-          <div class="acts"><span class="fake">문제 아님</span><span class="fake go">문제 맞음</span></div>
-        </div>
-      </div>
-      <figcaption>설명용 예시 그림이에요. 실제 화면과 다를 수 있어요.</figcaption>
+      <img class="shot" src="images/review.webp" width="1600" height="1000" loading="lazy"
+        alt="실제 검수 화면. 왼쪽에는 00:22 장면이 멈춰 있고, 오른쪽에는 찾은 곳 6건 목록이 있어요. 선택한 00:22 항목은 음성 '3층'과 자막 '2층'이 다르다는 지적이고, 아래에 음성 인식 내용과 자막을 나란히 보여 주며 확정·기각 버튼이 있어요.">
+      <figcaption>실제 프로그램 화면이에요. 1분짜리 예시 영상(문화교실 안내)을 분석한 결과예요.</figcaption>
     </figure>
   </div>
 </section>
@@ -235,11 +223,23 @@
     <p class="eyebrow">사용 방법</p>
     <h2 id="h-how">네 단계면 끝나요</h2>
     <ol class="steps" style="margin-top:22px">
-      <li><b>영상 고르기</b><span>점검할 영상을 골라요. 자막 파일이 있으면 같이 넣어요.</span></li>
-      <li><b>분석하기</b><span>시작 버튼을 누르고 기다려요.</span></li>
-      <li><b>확인하기</b><span>찾은 곳을 하나씩 눌러 보고 “문제 맞음” 또는 “문제 아님”을 골라요.</span></li>
+      <li><b>영상 고르기</b><span>점검할 영상을 골라요. 자막 파일(SRT, SMI)이 있으면 같이 넣어요.</span></li>
+      <li><b>분석하기</b><span>시작 버튼을 누르고 기다려요. 1분짜리 영상에 10분쯤 걸려요. 노트북은 충전기를 꽂아 두세요.</span></li>
+      <li><b>확인하기</b><span>찾은 곳을 하나씩 눌러 보고, 문제가 맞으면 “확정”, 아니면 “기각”을 눌러요.</span></li>
       <li><b>저장하기</b><span>결과를 엑셀로 열 수 있는 파일(CSV)로 저장해요.</span></li>
     </ol>
+    <div class="grid g2 shots" style="margin-top:22px">
+      <figure>
+        <img class="shot" src="images/register.webp" width="1200" height="750" loading="lazy"
+          alt="영상 등록 화면. 등록된 영상 '문화교실 안내.mp4'와 자막 파일 선택 칸, 분석 설정 요약(CPU, small 모델), 분석 시작 버튼이 있어요.">
+        <figcaption>1. 영상을 고르고 분석을 시작해요.</figcaption>
+      </figure>
+      <figure>
+        <img class="shot" src="images/region.webp" width="864" height="696" loading="lazy"
+          alt="자막 영역 확인 창. 영상 아래쪽에서 읽은 자막 예시 5줄을 보여 주고, '맞음', '영역 조정', '영상에 자막 없음' 중에서 고른 뒤 확인을 눌러요.">
+        <figcaption>자막 파일이 없으면, 영상 아래쪽에서 읽은 자막이 맞는지 물어봐요.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -251,6 +251,7 @@
       <div class="card">
         <h3>내려받기</h3>
         <a class="btn primary" href="https://github.com/nawoonkim423/everyai-download/releases/latest/download/everyai-setup.exe">설치 파일 받기 (약 950MB)</a>
+        <small>시험판 v0.1.0 · 2026년 11월 22일</small>
         <ol class="mini">
           <li>버튼을 누르면 설치 파일이 받아져요.</li>
           <li>받은 파일을 열어 설치해요.</li>
@@ -262,9 +263,9 @@
       <div class="card">
         <h3>이런 PC에서 돌아가요</h3>
         <table class="spec">
-          <tr><th scope="row">운영체제</th><td>Windows 10, 11 (64비트)<br><small>맥(macOS)용도 준비하고 있어요</small></td></tr>
+          <tr><th scope="row">운영체제</th><td>Windows 10, 11 (64비트)</td></tr>
           <tr><th scope="row">메모리</th><td>8GB 이상 권장</td></tr>
-          <tr><th scope="row">그래픽카드</th><td>없어도 돼요 (NVIDIA가 있으면 더 빨라요)</td></tr>
+          <tr><th scope="row">그래픽카드</th><td>없어도 돼요</td></tr>
           <tr><th scope="row">저장 공간</th><td>약 2GB<br><small>설치 파일은 약 950MB예요</small></td></tr>
           <tr><th scope="row">인터넷</th><td>필요 없어요<br><small>AI 모델이 설치 파일에 들어 있어요</small></td></tr>
         </table>
@@ -281,6 +282,8 @@
       <ul>
         <li>아직 만들고 있는 시제품이에요.</li>
         <li>AI가 틀릴 수 있어서, 결과는 꼭 사람이 확인해야 해요.</li>
+        <li>로고, 제목, 출처 같은 글자를 정보로 보고 지적할 때가 있어요.</li>
+        <li>자막은 화면 아래쪽에 나오는 것만 읽어요.</li>
         <li>효과음, 말하는 사람 구분, 동작의 의미는 아직 점검하지 않아요.</li>
       </ul>
     </div>
