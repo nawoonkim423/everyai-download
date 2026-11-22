@@ -9,9 +9,9 @@
 
 ## 내려받기
 
-설치 파일은 **곧 공개돼요.** 공개되면 이 저장소의 [Releases](https://github.com/nawoonkim423/everyai-download/releases)에서 받을 수 있어요.
+**[설치 파일 받기 (everyai-setup.exe, 약 950MB)](https://github.com/nawoonkim423/everyai-download/releases/latest/download/everyai-setup.exe)**
 
-1. Releases에서 `everyai-setup.exe`를 받아요.
+1. 위 링크를 누르면 설치 파일이 받아져요.
 2. 받은 파일을 열어 설치해요.
 3. 바탕화면 아이콘으로 실행해요.
 
@@ -24,7 +24,7 @@
 | 운영체제 | Windows 10, 11 (64비트) |
 | 메모리 | 8GB 이상 |
 | 그래픽카드 | 없어도 돼요 (NVIDIA가 있으면 더 빨라요) |
-| 저장 공간 | 약 3.5GB (AI 모델 포함) |
+| 저장 공간 | 약 3GB (설치 파일은 약 950MB) |
 | 인터넷 | 필요 없어요 (AI 모델이 설치 파일에 들어 있어요) |
 
 ## 알아 두세요
