@@ -80,8 +80,6 @@
   .fake{border-radius:8px;padding:6px 16px;font-weight:700;border:1px solid var(--line)}
   .fake.go{background:var(--teal);color:#fff;border-color:var(--teal)}
   figcaption{color:var(--sub);font-size:14px;margin-top:10px}
-  img.shot{display:block;width:100%;height:auto;border:1px solid #c9d6d3;border-radius:14px;box-shadow:0 10px 30px #1c2f3312;background:#fff}
-  .shots img.shot{object-fit:contain;aspect-ratio:16/10}
   ul.check{padding:0;margin:0;list-style:none;display:grid;gap:10px}
   ul.check li{padding-left:30px;position:relative}
   ul.check li::before{content:"";position:absolute;left:4px;top:.55em;width:12px;height:7px;border-left:3px solid #2d7a6a;border-bottom:3px solid #2d7a6a;transform:rotate(-45deg)}
@@ -99,6 +97,14 @@
   .dl .soon{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:10px;background:#eef1f0;color:#4a5b58;font-weight:700}
   .dl small{display:block;color:var(--sub);margin-top:8px}
   .hero .for{display:inline-block;margin:0 0 10px;padding:4px 12px;border-radius:999px;background:#ffffff1a;color:var(--gold);font-weight:700;font-size:15px}
+  .dl-guide{margin:14px 0 4px;background:var(--ok);color:var(--ok-ink);border-radius:10px;padding:12px 14px;font-size:15px;line-height:1.6}
+  .dl-guide ol{margin:6px 0 0;padding-left:20px}
+  .pc-check{border-radius:10px;padding:12px 14px;margin:0 0 14px;font-size:15px;line-height:1.6}
+  .pc-check.ok{background:var(--ok);color:var(--ok-ink)}
+  .pc-check.warn{background:var(--warn);color:var(--warn-ink)}
+  .pc-check ul{margin:6px 0 0;padding-left:20px}
+  .pc-check small{display:block;margin-top:6px;opacity:.85}
+  .hero-pc{margin:16px 0 0;display:inline-block;background:#fdf1e3;color:#8a4b08;border-radius:10px;padding:8px 14px;font-weight:700;font-size:15px}
   footer{background:var(--deep);color:#cfe0da;padding:36px 0;font-size:15px}
   footer .brand{margin-bottom:10px;color:#fff;font-size:17px}
   footer p{margin:4px 0}
@@ -139,6 +145,7 @@
       <a class="btn ghost" href="#how">사용 방법 보기</a>
       <a class="btn primary" href="#download">프로그램 받기</a>
     </nav>
+    <p class="hero-pc" id="hero-pc" hidden></p>
     </div>
     <figure class="hero-demo" aria-label="찾아 주는 예시: 화면에는 신청 마감 10월 30일(금)이 나오지만 음성은 서둘러 주세요라고만 해서, 시각장애인은 마감일을 알 수 없어요.">
       <p class="demo-title">이런 걸 찾아 줘요</p>
@@ -200,9 +207,23 @@
     <p class="eyebrow">화면 미리 보기</p>
     <h2 id="h-screen">목록을 누르면 그 장면이 바로 나와요</h2>
     <figure>
-      <img class="shot" src="images/review.webp" width="1600" height="1000" loading="lazy"
-        alt="실제 검수 화면. 왼쪽에는 00:22 장면이 멈춰 있고, 오른쪽에는 찾은 곳 6건 목록이 있어요. 선택한 00:22 항목은 음성 '3층'과 자막 '2층'이 다르다는 지적이고, 아래에 음성 인식 내용과 자막을 나란히 보여 주며 확정·기각 버튼이 있어요.">
-      <figcaption>실제 프로그램 화면이에요. 1분짜리 예시 영상(문화교실 안내)을 분석한 결과예요.</figcaption>
+      <div class="mock" role="img" aria-label="검수 화면 예시. 위에는 영상 이름과 찾은 곳 8건 요약, 왼쪽에는 영상, 오른쪽에는 찾은 곳 목록, 아래에는 음성과 자막 비교와 확정·기각 버튼이 있어요.">
+        <div class="top"><b>문화교실 안내.mp4</b><span class="chip">찾은 곳 8</span><span class="chip">확인 전 5</span><span class="chip">문제 맞음 2</span><span class="chip">문제 아님 1</span></div>
+        <div class="mid">
+          <div class="player"><span class="banner">장소 | 주민문화센터 3층 강의실</span><span class="cap">장소는 주민문화센터 2층 강의실이에요.</span></div>
+          <div class="list">
+            <div class="item sel"><b>00:22 자막 숫자가 달라요</b><small>음성 3층 · 자막 2층</small><span class="st">확인 전</span></div>
+            <div class="item"><b>00:28 자막이 없어요</b><small>접수 안내 음성에 자막 없음</small><span class="st c">문제 맞음</span></div>
+            <div class="item"><b>00:35 말로 안 나와요</b><small>신청 마감일이 화면에만 있음</small><span class="st">확인 전</span></div>
+          </div>
+        </div>
+        <div class="bottom">
+          <b>00:22 · 음성과 자막의 층수가 달라요</b>
+          <div class="pair"><div><small>음성</small>장소는 주민문화센터 3층 강의실이에요.</div><div><small>자막</small>장소는 주민문화센터 2층 강의실이에요.</div></div>
+          <div class="acts"><span class="fake">문제 아님</span><span class="fake go">문제 맞음</span></div>
+        </div>
+      </div>
+      <figcaption>설명용 예시 그림이에요. 실제 화면과 다를 수 있어요.</figcaption>
     </figure>
   </div>
 </section>
@@ -223,23 +244,11 @@
     <p class="eyebrow">사용 방법</p>
     <h2 id="h-how">네 단계면 끝나요</h2>
     <ol class="steps" style="margin-top:22px">
-      <li><b>영상 고르기</b><span>점검할 영상을 골라요. 자막 파일(SRT, SMI)이 있으면 같이 넣어요.</span></li>
-      <li><b>분석하기</b><span>시작 버튼을 누르고 기다려요. 1분짜리 영상에 10분쯤 걸려요. 노트북은 충전기를 꽂아 두세요.</span></li>
-      <li><b>확인하기</b><span>찾은 곳을 하나씩 눌러 보고, 문제가 맞으면 “확정”, 아니면 “기각”을 눌러요.</span></li>
+      <li><b>영상 고르기</b><span>점검할 영상을 골라요. 자막 파일이 있으면 같이 넣어요.</span></li>
+      <li><b>분석하기</b><span>시작 버튼을 누르고 기다려요.</span></li>
+      <li><b>확인하기</b><span>찾은 곳을 하나씩 눌러 보고 “문제 맞음” 또는 “문제 아님”을 골라요.</span></li>
       <li><b>저장하기</b><span>결과를 엑셀로 열 수 있는 파일(CSV)로 저장해요.</span></li>
     </ol>
-    <div class="grid g2 shots" style="margin-top:22px">
-      <figure>
-        <img class="shot" src="images/register.webp" width="1200" height="750" loading="lazy"
-          alt="영상 등록 화면. 등록된 영상 '문화교실 안내.mp4'와 자막 파일 선택 칸, 분석 설정 요약(CPU, small 모델), 분석 시작 버튼이 있어요.">
-        <figcaption>1. 영상을 고르고 분석을 시작해요.</figcaption>
-      </figure>
-      <figure>
-        <img class="shot" src="images/region.webp" width="864" height="696" loading="lazy"
-          alt="자막 영역 확인 창. 영상 아래쪽에서 읽은 자막 예시 5줄을 보여 주고, '맞음', '영역 조정', '영상에 자막 없음' 중에서 고른 뒤 확인을 눌러요.">
-        <figcaption>자막 파일이 없으면, 영상 아래쪽에서 읽은 자막이 맞는지 물어봐요.</figcaption>
-      </figure>
-    </div>
   </div>
 </section>
 
@@ -250,11 +259,19 @@
     <div class="dl">
       <div class="card">
         <h3>내려받기</h3>
-        <a class="btn primary" href="https://github.com/nawoonkim423/everyai-download/releases/latest/download/everyai-setup.exe">설치 파일 받기 (약 950MB)</a>
-        <small>시험판 v0.1.0 · 2026년 11월 22일</small>
-        <ol class="mini">
+        <div class="pc-check" id="pc-check" role="status" aria-live="polite" hidden></div>
+        <a class="btn primary" id="dl-btn" href="https://github.com/nawoonkim423/everyai-download/releases/latest/download/everyai-setup.exe">설치 파일 받기 (약 950MB)</a>
+        <div class="dl-guide" id="dl-guide" role="status" aria-live="polite" hidden>
+          <b>다운로드가 시작됐어요.</b> 다 받아지면:
+          <ol>
+            <li>브라우저 위나 아래의 <b>everyai-setup.exe</b>를 눌러 열어요.</li>
+            <li>“Windows의 PC 보호” 창이 뜨면 <b>추가 정보 → 실행</b>을 눌러요.</li>
+            <li><b>다음 → 설치</b>를 누르면 끝! 바탕화면 아이콘으로 켜요.</li>
+          </ol>
+        </div>
+        <ol class="mini" id="dl-steps">
           <li>버튼을 누르면 설치 파일이 받아져요.</li>
-          <li>받은 파일을 열어 설치해요.</li>
+          <li>받은 파일을 열어 설치해요. 관리자 비밀번호는 필요 없어요.</li>
           <li>바탕화면 아이콘으로 실행해요.</li>
         </ol>
         <small>“Windows의 PC 보호” 창이 뜨면 <b>추가 정보 → 실행</b>을 눌러 주세요.</small>
@@ -263,11 +280,13 @@
       <div class="card">
         <h3>이런 PC에서 돌아가요</h3>
         <table class="spec">
-          <tr><th scope="row">운영체제</th><td>Windows 10, 11 (64비트)</td></tr>
-          <tr><th scope="row">메모리</th><td>8GB 이상 권장</td></tr>
-          <tr><th scope="row">그래픽카드</th><td>없어도 돼요</td></tr>
-          <tr><th scope="row">저장 공간</th><td>약 2GB<br><small>설치 파일은 약 950MB예요</small></td></tr>
+          <tr><th scope="row">운영체제</th><td>Windows 10, 11 (64비트)<br><small>맥(macOS)용도 준비하고 있어요</small></td></tr>
+          <tr><th scope="row">메모리</th><td>8GB 이상 권장<br><small>8GB보다 적으면 작은 인식 모델을 써서 정확도가 낮아져요</small></td></tr>
+          <tr><th scope="row">프로세서</th><td>정해진 최소 사양은 없어요<br><small>코어가 많을수록 빨라요</small></td></tr>
+          <tr><th scope="row">그래픽카드</th><td>필요 없어요<br><small>지금 시험판은 CPU로 분석해요. 그래픽카드 가속은 준비 중이에요</small></td></tr>
+          <tr><th scope="row">저장 공간</th><td>2GB 이상 여유<br><small>설치 파일은 약 950MB예요</small></td></tr>
           <tr><th scope="row">인터넷</th><td>필요 없어요<br><small>AI 모델이 설치 파일에 들어 있어요</small></td></tr>
+          <tr><th scope="row">분석 시간</th><td>1분 영상에 약 2~3분<br><small>노트북 시험 기준이에요. PC마다 달라요</small></td></tr>
         </table>
         <small>시제품 기준이라 바뀔 수 있어요.</small>
       </div>
@@ -282,8 +301,6 @@
       <ul>
         <li>아직 만들고 있는 시제품이에요.</li>
         <li>AI가 틀릴 수 있어서, 결과는 꼭 사람이 확인해야 해요.</li>
-        <li>로고, 제목, 출처 같은 글자를 정보로 보고 지적할 때가 있어요.</li>
-        <li>자막은 화면 아래쪽에 나오는 것만 읽어요.</li>
         <li>효과음, 말하는 사람 구분, 동작의 의미는 아직 점검하지 않아요.</li>
       </ul>
     </div>
@@ -298,5 +315,52 @@
     <p>모두에게 닿는 영상을 만들어요.</p>
   </div>
 </footer>
+<script>
+  // 받기 버튼을 누르면 다음에 할 일을 바로 보여 준다(다운로드는 링크가 그대로 한다).
+  (function(){
+    var btn=document.getElementById('dl-btn'),guide=document.getElementById('dl-guide'),steps=document.getElementById('dl-steps');
+    if(!btn||!guide)return;
+    btn.addEventListener('click',function(){guide.hidden=false;if(steps)steps.hidden=true;});
+  })();
+</script>
+<script>
+  // 방문자 PC가 사양에 맞는지 브라우저가 알려 주는 범위에서만 대략 확인한다.
+  // (브라우저는 디스크 여유 공간을 알려 주지 않고, 메모리는 대략값이며 일부 브라우저만 알려 준다.)
+  (async function(){
+    var box=document.getElementById('pc-check'),hero=document.getElementById('hero-pc');
+    if(!box)return;
+    var ua=navigator.userAgent||'',uad=navigator.userAgentData;
+    var platform=(uad&&uad.platform)||'';
+    var isMobile=(uad&&uad.mobile)||/Android|iPhone|iPad|iPod/i.test(ua);
+    var isWindows=/Windows/i.test(platform)||/Windows NT/i.test(ua);
+    var isMac=/mac/i.test(platform)||/Macintosh/i.test(ua);
+    var warns=[],notes=[];
+    if(isMobile){warns.push('휴대폰·태블릿에서는 쓸 수 없어요. 윈도우 PC에서 이 페이지를 열어 주세요.');}
+    else if(isMac){warns.push('지금은 윈도우용만 있어요. 맥(macOS)용은 준비하고 있어요.');}
+    else if(!isWindows){warns.push('윈도우 PC가 아닌 것 같아요. 이 프로그램은 Windows 10, 11에서 돌아가요.');}
+    else{
+      var arch='',bits='';
+      try{if(uad&&uad.getHighEntropyValues){var h=await uad.getHighEntropyValues(['architecture','bitness']);arch=h.architecture||'';bits=h.bitness||'';}}catch(e){}
+      if(bits==='32'||(!bits&&/WOW64|Win32;/.test(ua)&&!/Win64|x64/.test(ua)))warns.push('32비트 윈도우로 보여요. 이 프로그램은 64비트 윈도우가 필요해요.');
+      if(arch==='arm')warns.push('ARM 프로세서 PC로 보여요. 일반(x64) PC용이라 느리거나 실행되지 않을 수 있어요.');
+      var mem=navigator.deviceMemory;
+      if(typeof mem==='number'){if(mem<8)warns.push('메모리가 8GB보다 적어 보여요(약 '+mem+'GB). 실행은 되지만 작은 인식 모델을 써서 정확도가 낮아질 수 있어요.');}
+      else notes.push('이 브라우저는 메모리 크기를 알려 주지 않아요. 8GB 이상인지 확인해 주세요.');
+      var cores=navigator.hardwareConcurrency;
+      if(typeof cores==='number'&&cores<4)warns.push('프로세서 코어가 적어 보여요('+cores+'개). 분석이 오래 걸릴 수 있어요.');
+    }
+    var html;
+    if(warns.length){
+      box.className='pc-check warn';
+      html='<b>⚠ 이 기기에서는 확인이 필요해요</b><ul>'+warns.map(function(w){return '<li>'+w+'</li>';}).join('')+'</ul>';
+      if(hero&&(isMobile||isMac||!isWindows)){hero.textContent='⚠ '+warns[0];hero.hidden=false;}
+    }else{
+      box.className='pc-check ok';
+      html='<b>✓ 이 PC에서 쓸 수 있어 보여요</b>';
+    }
+    html+='<small>브라우저가 알려 주는 정보로 대략 확인한 거예요. 저장 공간(2GB 이상)은 직접 확인해 주세요.'+(notes.length?' '+notes.join(' '):'')+'</small>';
+    box.innerHTML=html;box.hidden=false;
+  })();
+</script>
 </body>
 </html>
